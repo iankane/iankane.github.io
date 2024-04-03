@@ -1,0 +1,22 @@
+.header {
+    padding: 80px;
+    text-align: center;
+    background: #c8b4ff;
+    color: white;
+  }
+  
+  .header h1 {
+    font-size: 40px;
+  }
+
+  .majorLink{
+    font-size: 36px;
+    display: block;
+    margin: auto;
+    text-align: center;
+    color: white;
+    background-color: #c8b4ff;
+  }
+  .mainBody{
+    
+  }
