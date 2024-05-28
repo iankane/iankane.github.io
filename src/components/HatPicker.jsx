@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
-import { randomMax } from "./Helper";
+import { randomMax } from "../Helper";
 
 const Home = () => {
   const [result, setResult] = useState("Result");
@@ -34,7 +34,7 @@ const Home = () => {
   };
   return (
     <>
-      <Container fluid="md">
+      <Container fluid="md" data-bs-theme="dark">
         <Form width={0.5}>
           <Row className="mt-2">
             <Col>

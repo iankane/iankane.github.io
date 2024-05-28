@@ -1,12 +1,12 @@
 import React from "react";
-import { Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
+import { Nav, Navbar, Container } from "react-bootstrap";
 
 const Navigation = () => {
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg" className="bg-body-tertiary" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Ian Kane Design</Navbar.Brand>
+          <Navbar.Brand href="/">Ian Kane Design</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -17,6 +17,8 @@ const Navigation = () => {
               <Nav.Link href="https://demos.accusoft.com/virtualviewer/">
                 VirtualViewer Demo
               </Nav.Link>
+              <Nav.Link href="/picker">Pluck from Hat</Nav.Link>
+              {/* <Nav.Link href="/plex">Plex</Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
