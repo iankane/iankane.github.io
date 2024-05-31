@@ -8,6 +8,7 @@ const Home = () => {
   const [option2, setOption2] = useState("");
   const [option3, setOption3] = useState("");
   const [option4, setOption4] = useState("");
+
   var handleButtonClick = (e) => {
     var hat = randomMax(4);
     switch (hat) {
@@ -27,11 +28,13 @@ const Home = () => {
         console.log("BUSTED");
     }
   };
+
   var handleChange = (setter) => {
     return (e) => {
       setter(e.target.value);
     };
   };
+
   return (
     <>
       <Container fluid="md" data-bs-theme="dark">
