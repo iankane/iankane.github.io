@@ -5,6 +5,7 @@ import HatPicker from "./HatPicker";
 import Plex from "./Plex";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Whiteboard from "./Whiteboard";
 
 function App() {
   const token = "6tySK2p9ZxyKAySWyyNU";
@@ -36,6 +37,10 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/picker" element={<HatPicker />}></Route>
           <Route path="/Plex" element={<Plex metadata={metadata} />}></Route>
+          <Route
+            path="/Whiteboard"
+            element={<Whiteboard width={2000} height={750} />}
+          />
         </Routes>
       </div>
     </Router>
