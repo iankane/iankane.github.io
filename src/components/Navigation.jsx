@@ -18,7 +18,7 @@ const Navigation = () => {
                 VirtualViewer Demo
               </Nav.Link>
               <Nav.Link href="/#/picker">Pluck from Hat</Nav.Link>
-              {/* <Nav.Link href="/plex">Plex</Nav.Link> */}
+              <Nav.Link href="/#/plex">Plex</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
