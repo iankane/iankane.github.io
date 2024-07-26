@@ -1,16 +1,20 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState } from "react";
+import Canvas from "./Canvas";
+import ToolTray from "./ToolTray";
 
 const Whiteboard = (props) => {
-  const canvasRef = useRef(null);
-  useEffect(() => {
-    let canvas = canvasRef.current;
-    let ctx = canvas.getContext("2d");
-    ctx.moveTo(0, 0);
-    ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, props.width, props.height);
-    //draw on canvas
-  });
-  return <canvas ref={canvasRef} width={props.width} height={props.height} />;
+  var [currentTool, setCurrentTool] = useState(-1);
+  return (
+    <>
+      <ToolTray setter={setCurrentTool} />
+      <Canvas
+        width={props.width}
+        height={props.height}
+        currentTool={currentTool}
+      ></Canvas>
+      ;
+    </>
+  );
 };
 
 export default Whiteboard;

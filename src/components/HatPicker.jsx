@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
-import { randomMax } from "../Helper";
+import { randomMax } from "../js/Helper.js";
 
 const Home = () => {
   const [result, setResult] = useState("Result");
