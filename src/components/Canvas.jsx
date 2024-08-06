@@ -76,18 +76,32 @@ const Canvas = (props) => {
     } else {
       drawY = endY - yOffset;
     }
-    const width = Math.abs(startX - endX);
-    const height = Math.abs(startY - endY);
+    var width = Math.abs(startX - endX);
+    var height = Math.abs(startY - endY);
     if (props.currentTool === 1) {
       ctx.fillStyle = "red";
       ctx.fillRect(drawX, drawY, width, height);
     } else if (props.currentTool === 2) {
+      width = width / 2;
+      height = height / 2;
+      drawX += width;
+      drawY += height;
       ctx.fillStyle = "red";
-      ctx.ellipse(drawX, drawY, width, height);
-    }
-    if (props.currentTool === 3) {
+      ctx.beginPath();
+      ctx.ellipse(drawX, drawY, width, height, 0, 0, 2 * Math.PI);
+      ctx.fill();
+    } else if (props.currentTool === 3) {
       ctx.strokeStyle = "red";
       ctx.strokeRect(drawX, drawY, width, height);
+    } else if (props.currentTool === 4) {
+      width = width / 2;
+      height = height / 2;
+      drawX += width;
+      drawY += height;
+      ctx.lineStyle = "red";
+      ctx.beginPath();
+      ctx.ellipse(drawX, drawY, width, height, 0, 0, 2 * Math.PI);
+      ctx.stroke();
     }
   };
 
@@ -99,9 +113,42 @@ const Canvas = (props) => {
         ctx.fillRect(obj.startX, obj.startY, obj.width, obj.height);
       }
 
+      if (obj.type === toolLookup[2]) {
+        ctx.fillStyle = "red";
+        let width = obj.width / 2;
+        let height = obj.height / 2;
+        ctx.beginPath();
+        ctx.ellipse(
+          obj.startX + width,
+          obj.startY + height,
+          width,
+          height,
+          0,
+          0,
+          2 * Math.PI
+        );
+        ctx.fill();
+      }
       if (obj.type === toolLookup[3]) {
         ctx.strokeStyle = "red";
         ctx.strokeRect(obj.startX, obj.startY, obj.width, obj.height);
+      }
+
+      if (obj.type === toolLookup[4]) {
+        ctx.lineStyle = "red";
+        let width = obj.width / 2;
+        let height = obj.height / 2;
+        ctx.beginPath();
+        ctx.ellipse(
+          obj.startX + width,
+          obj.startY + height,
+          width,
+          height,
+          0,
+          0,
+          2 * Math.PI
+        );
+        ctx.stroke();
       }
     }
   };
@@ -128,20 +175,10 @@ const Canvas = (props) => {
     } else {
       drawY = endY - yOffset;
     }
-    const width = Math.abs(startX - endX);
-    const height = Math.abs(startY - endY);
-    if (props.currentTool === 1) {
-      ctx.fillStyle = "red";
-      ctx.fillRect(drawX, drawY, width, height);
-    } else if (props.currentTool === 2) {
-      ctx.fillStyle = "red";
-      ctx.ellipse(drawX, drawY, width, height);
-    }
-    if (props.currentTool === 3) {
-      ctx.strokeStyle = "red";
-      ctx.strokeRect(drawX, drawY, width, height);
-    }
+    let width = Math.abs(startX - endX);
+    let height = Math.abs(startY - endY);
     updateObjects(drawX, drawY, width, height);
+    drawObjArray(ctx);
     setStartX(0);
     setStartY(0);
     setEndX(0);
