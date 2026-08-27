@@ -106,15 +106,15 @@ const Home = () => {
           <Row className="mt-2">
             <Col>
               <Form.Control
-                value={option3}
-                onChange={handleChange(setOption3)}
+                value={option5}
+                onChange={handleChange(setOption5)}
                 placeholder="Option 5"
               />
             </Col>
             <Col>
               <Form.Control
-                value={option4}
-                onChange={handleChange(setOption4)}
+                value={option6}
+                onChange={handleChange(setOption6)}
                 placeholder="Option 6"
               />
             </Col>
