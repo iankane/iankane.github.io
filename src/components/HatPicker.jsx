@@ -8,9 +8,12 @@ const Home = () => {
   const [option2, setOption2] = useState("");
   const [option3, setOption3] = useState("");
   const [option4, setOption4] = useState("");
+  const [option5, setOption5] = useState("");
+  const [option6, setOption6] = useState("");
 
   var handleButtonClick = (e) => {
-    var hat = randomMax(4);
+    var count = getUsedInputsCount();
+    var hat = randomMax(count);
     switch (hat) {
       case 0:
         setResult(option1);
@@ -24,6 +27,12 @@ const Home = () => {
       case 3:
         setResult(option4);
         break;
+      case 4:
+        setResult(option5);
+        break;
+      case 5:
+        setResult(option6);
+        break;
       default:
         console.log("BUSTED");
     }
@@ -33,6 +42,29 @@ const Home = () => {
     return (e) => {
       setter(e.target.value);
     };
+  };
+
+  var getUsedInputsCount = () =>{
+    var count = 0;
+    if(option1 != ""){
+      count ++;
+    }
+    if(option2 != ""){
+      count ++;
+    }
+    if(option3 != ""){
+      count ++;
+    }
+    if(option4 != ""){
+      count ++;
+    }
+    if(option5 != ""){
+      count ++;
+    }
+    if(option6 != ""){
+      count ++;
+    }
+    return count;
   };
 
   return (
@@ -68,6 +100,22 @@ const Home = () => {
                 value={option4}
                 onChange={handleChange(setOption4)}
                 placeholder="Option 4"
+              />
+            </Col>
+          </Row>
+          <Row className="mt-2">
+            <Col>
+              <Form.Control
+                value={option3}
+                onChange={handleChange(setOption3)}
+                placeholder="Option 5"
+              />
+            </Col>
+            <Col>
+              <Form.Control
+                value={option4}
+                onChange={handleChange(setOption4)}
+                placeholder="Option 6"
               />
             </Col>
           </Row>
