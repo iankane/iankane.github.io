@@ -1,41 +1,29 @@
 import React, { useState } from "react";
-import { Form, Button, Row, Col, Container } from "react-bootstrap";
-import { randomMax } from "../js/Helper.js";
+import { Form, Button, Row, Col, Container, Stack, ListGroup } from "react-bootstrap";
+import { ChooseRandom, randomMax } from "../js/Helper.js";
 
 const Home = () => {
   const [result, setResult] = useState("Result");
-  const [option1, setOption1] = useState("");
-  const [option2, setOption2] = useState("");
-  const [option3, setOption3] = useState("");
-  const [option4, setOption4] = useState("");
-  const [option5, setOption5] = useState("");
-  const [option6, setOption6] = useState("");
+  const [input, setInput] = useState("");
+  const [options, setOptions] = useState([]);
 
-  var handleButtonClick = (e) => {
-    var count = getUsedInputsCount();
-    var hat = randomMax(count);
-    switch (hat) {
-      case 0:
-        setResult(option1);
-        break;
-      case 1:
-        setResult(option2);
-        break;
-      case 2:
-        setResult(option3);
-        break;
-      case 3:
-        setResult(option4);
-        break;
-      case 4:
-        setResult(option5);
-        break;
-      case 5:
-        setResult(option6);
-        break;
-      default:
-        console.log("BUSTED");
+  var handleAddButtonClick = (e) => {
+    if (input != "") {
+      setOptions([
+        ...options,
+        input
+      ]);
+      setInput("");
     }
+  };
+
+  var handlePullButtonClick = (e) => {
+    setResult(options[Math.floor(Math.random() * options.length)]);
+  };
+
+  var handleListPick = (option) => {
+    var result = options.filter((o) => o == option);
+    setOptions(result);
   };
 
   var handleChange = (setter) => {
@@ -44,95 +32,47 @@ const Home = () => {
     };
   };
 
-  var getUsedInputsCount = () =>{
+  var handleRemoveFromList = (option) => {
+
+  }
+
+  var getUsedInputsCount = () => {
     var count = 0;
-    if(option1 != ""){
-      count ++;
-    }
-    if(option2 != ""){
-      count ++;
-    }
-    if(option3 != ""){
-      count ++;
-    }
-    if(option4 != ""){
-      count ++;
-    }
-    if(option5 != ""){
-      count ++;
-    }
-    if(option6 != ""){
-      count ++;
-    }
+
     return count;
   };
 
   return (
     <>
-      <Container fluid="md" data-bs-theme="dark">
-        <Form width={0.5}>
-          <Row className="mt-2">
-            <Col>
+      <Container data-bs-theme="dark" >
+        <Row>
+          <Col className="col-md-6">
+            <Form>
               <Form.Control
-                value={option1}
-                onChange={handleChange(setOption1)}
-                placeholder="Option 1"
+                value={input}
+                onChange={handleChange(setInput)}
+                placeholder="Option"
               />
-            </Col>
-            <Col>
-              <Form.Control
-                value={option2}
-                onChange={handleChange(setOption2)}
-                placeholder="Option 2"
-              />
-            </Col>
-          </Row>
-          <Row className="mt-2">
-            <Col>
-              <Form.Control
-                value={option3}
-                onChange={handleChange(setOption3)}
-                placeholder="Option 3"
-              />
-            </Col>
-            <Col>
-              <Form.Control
-                value={option4}
-                onChange={handleChange(setOption4)}
-                placeholder="Option 4"
-              />
-            </Col>
-          </Row>
-          <Row className="mt-2">
-            <Col>
-              <Form.Control
-                value={option5}
-                onChange={handleChange(setOption5)}
-                placeholder="Option 5"
-              />
-            </Col>
-            <Col>
-              <Form.Control
-                value={option6}
-                onChange={handleChange(setOption6)}
-                placeholder="Option 6"
-              />
-            </Col>
-          </Row>
-          <Row className="mt-2">
-            <Col width={3}>
-              <Button onClick={handleButtonClick}>Pick from a hat!</Button>
-            </Col>
-            <Col width={7}>
-              <Form.Control
-                type="text"
-                disabled
-                readOnly
-                value={result}
-              ></Form.Control>
-            </Col>
-          </Row>
-        </Form>
+              <Stack gap={2} className="col-md-4 mx-auto">
+                <Button onClick={handleAddButtonClick}>Add to selection</Button>
+                <Button style={{ background: "green" }} onClick={handlePullButtonClick}>Pick from a hat!</Button>
+              </Stack>
+            </Form>
+          </Col>
+          <Col className="col-md-6">
+            <ListGroup >
+              {options.map(option => (
+                <ListGroup.Item style={{ color: "ivory" }} onClick={handleRemoveFromList(option)}>{option}</ListGroup.Item>
+              ))}
+            </ListGroup>
+            <Form.Control
+              type="text"
+              disabled
+              readOnly
+              value={result}
+            ></Form.Control>
+          </Col>
+        </Row>
       </Container>
     </>
   );

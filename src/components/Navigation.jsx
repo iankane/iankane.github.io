@@ -10,16 +10,16 @@ const Navigation = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="https://blog.iankanedesign.com/">Blog</Nav.Link>
+              <Nav.Link href="https://github.com/iankane">Github</Nav.Link>
               <Nav.Link href="https://www.linkedin.com/in/ian-kane-software-developer/">
                 LinkedIn
               </Nav.Link>
               <Nav.Link href="https://demos.accusoft.com/virtualviewer/">
                 VirtualViewer Demo
               </Nav.Link>
+              <Nav.Link href="https://www.boat-ed.com/newyork/plus/">BoatEd+</Nav.Link>
+              <Nav.Link href="https://blog.iankanedesign.com/">Blog</Nav.Link>
               <Nav.Link href="/#/picker">Pluck from Hat</Nav.Link>
-              <Nav.Link href="/#/plex">Plex</Nav.Link>
-              <Nav.Link href="/#/Whiteboard">Whiteboard</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

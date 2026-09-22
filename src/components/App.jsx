@@ -36,11 +36,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/picker" element={<HatPicker />}></Route>
-          <Route path="/Plex" element={<Plex metadata={metadata} />}></Route>
+          {/* <Route path="/Plex" element={<Plex metadata={metadata} />}></Route>
           <Route
             path="/Whiteboard"
             element={<Whiteboard width={2000} height={750} />}
-          />
+          /> */}
         </Routes>
       </div>
     </Router>
