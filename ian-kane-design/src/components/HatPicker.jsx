@@ -21,19 +21,18 @@ const Home = () => {
     setResult(options[Math.floor(Math.random() * options.length)]);
   };
 
-  var handleListPick = (option) => {
-    var result = options.filter((o) => o == option);
-    setOptions(result);
-  };
-
   var handleChange = (setter) => {
     return (e) => {
       setter(e.target.value);
     };
   };
 
-  var handleRemoveFromList = (option) => {
-
+  var handleRemoveFromList = (e) => {
+    if (e != null) {
+      var title = e.target.innerHTML;
+      var tempOptions = options.filter((o) => o != title)
+      setOptions(tempOptions);
+    }
   }
 
   var getUsedInputsCount = () => {
@@ -62,7 +61,7 @@ const Home = () => {
           <Col className="col-md-6">
             <ListGroup >
               {options.map(option => (
-                <ListGroup.Item style={{ color: "ivory" }} onClick={handleRemoveFromList(option)}>{option}</ListGroup.Item>
+                <ListGroup.Item style={{ color: "ivory" }} onClick={handleRemoveFromList}>{option}</ListGroup.Item>
               ))}
             </ListGroup>
             <Form.Control
