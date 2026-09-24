@@ -1,11 +1,11 @@
 
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "./App.css";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import HatPicker from "./components/HatPicker";
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const token = "6tySK2p9ZxyKAySWyyNU";
