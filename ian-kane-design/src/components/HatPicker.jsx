@@ -4,11 +4,9 @@ import { Form, Button, Row, Col, Container, Stack, ListGroup } from "react-boots
 import { ChooseRandom, randomMax } from "../js/Helper.js";
 
 const Home = () => {
-  const [result, setResult] = useState("Result");
   const [input, setInput] = useState("");
   const [options, setOptions] = useState([]);
   const inputRef = useFocus();
-
 
   var addToList = () => {
     if (input != "") {
@@ -19,19 +17,6 @@ const Home = () => {
       setInput("");
     }
   }
-
-  var handleAddButtonClick = (e) => {
-    addToList();
-  };
-
-  var handlePullButtonClick = (e) => {
-    var choice = Math.floor(Math.random() * options.length);
-    setResult(options[choice].title);
-    options.forEach(option => {
-      option.isSelected = false;
-    });
-    options[choice].isSelected = true;
-  };
 
   var handleChange = (setter) => {
     return (e) => {
@@ -51,12 +36,20 @@ const Home = () => {
       var tempOptions = options.filter((o) => o.title != title)
       setOptions(tempOptions);
     }
-  }
+  };
 
-  var getUsedInputsCount = () => {
-    var count = 0;
+  var handleAddButtonClick = (e) => {
+    addToList();
+  };
 
-    return count;
+  var handlePullButtonClick = (e) => {
+    var choice = Math.floor(Math.random() * options.length);
+    var opt = options.slice();
+    opt.forEach(option => {
+      option.isSelected = false;
+    });
+    opt[choice].isSelected = true;
+    setOptions(opt);
   };
 
   return (
@@ -81,15 +74,9 @@ const Home = () => {
           <Col className="col-md-6">
             <ListGroup >
               {options.map(option => (
-                <ListGroup.Item style={{ color: "ivory", background: option.isSelected ? "green" : "grey" }} onClick={handleRemoveFromList}>{option.title}</ListGroup.Item>
+                <ListGroup.Item key={option.title} style={{ color: "ivory", background: option.isSelected ? "green" : "grey" }} onClick={handleRemoveFromList}>{option.title}</ListGroup.Item>
               ))}
             </ListGroup>
-            <Form.Control
-              type="text"
-              disabled
-              readOnly
-              value={result}
-            ></Form.Control>
           </Col>
         </Row>
       </Container>
