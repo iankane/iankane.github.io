@@ -1,5 +1,5 @@
 
-import { HashRouter as HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
@@ -30,7 +30,7 @@ function App() {
       });
   });
   return (
-    <HashRouter>
+    <Router>
       <div className="App">
         <Navigation />
         <Routes>
@@ -43,7 +43,7 @@ function App() {
           /> */}
         </Routes>
       </div>
-    </HashRouter>
+    </Router>
   );
 }
 

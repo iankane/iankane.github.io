@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Container, Row } from "react-bootstrap";
-import headshot from "../resources/Headshot.jpg";
+import headshot from "../assets/Headshot.jpg";
 const Home = () => {
   return (
     <Container data-bs-theme="dark">
